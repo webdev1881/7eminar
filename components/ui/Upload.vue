@@ -13,9 +13,10 @@ const props = defineProps<UploadProps>();
 const emit = defineEmits(["update:modelValue"]);
 const fileInput = ref<HTMLInputElement | null>(null);
 const fileName = ref<string>(props.modelValue ? props.modelValue.name : "");
+const touched = ref(false);
 
-const onFileChange = (event: Event) => {
-  const target = event.target as HTMLInputElement;
+const onFileChange = async (event: Event) => {
+  const target = await event.target as HTMLInputElement;
   const file = target.files?.[0] || null;
   fileName.value = file ? file.name : "";
   emit("update:modelValue", file);
@@ -27,10 +28,10 @@ const onButtonClick = () => {
 </script>
 
 <template>
-  <div :class="['upload-container', { 'upload--error': error }]">
+  <div @click="touched = true" :class="['upload-container', { 'upload--error': error && touched }]">
     <button
-      @click="onButtonClick"
-      :class="['upload-button', { 'upload-button--error': error }]"
+      @click.stop="onButtonClick"
+      :class="['upload-button', { 'upload-button--error': error && touched }]"
     >
       {{ label }}
     </button>
@@ -41,7 +42,7 @@ const onButtonClick = () => {
       class="upload-input"
     />
     <span
-      :class="['upload-placeholder', { 'upload-placeholder--error': error }]"
+      :class="['upload-placeholder', { 'upload-placeholder--error': error && touched }]"
     >
       {{ fileName || placeholder }}
     </span>
@@ -54,7 +55,6 @@ const onButtonClick = () => {
   display: flex;
   margin: 0.5em 0;
   position: relative;
-  width: 380px;
 }
 
 .upload-button {

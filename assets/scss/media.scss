@@ -1,10 +1,39 @@
-@media (min-width: 1024px) {
+@media (min-width: 1170px) {
+  .container {
+    max-width: 1170px;
+  }
+  .banner {
+    max-width: 1170px;
+  }
+  .post-user {
+    width: 380px;
+  }
+  .user-card {
+    min-width: 330px;
+  }
+  .header {
+    max-width: 1170px;
+  }
+  .header-right {
+    padding-right: 60px;
+  }
+  .header-left {
+    padding-left: 60px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1170px) {
   .container {
     max-width: 1024px;
   }
-
+  .banner {
+    max-width: 1024px;
+  }
+  .post-user {
+    width: 380px;
+  }
   .user-card {
-    width: 282px;
+    min-width: 242px;
   }
   .header {
     max-width: 1024px;
@@ -16,13 +45,19 @@
     padding-left: 60px;
   }
 }
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .container {
     max-width: 768px;
   }
-
+  .banner {
+    max-width: 768px;
+  }
+  .post-user {
+    width: 380px;
+  }
   .user-card {
-    width: 280px;
+    min-width: 304px;
   }
   .header {
     max-width: 768px;
@@ -34,12 +69,19 @@
     padding-left: 32px;
   }
 }
+
 @media (max-width: 767px) {
   .container {
     max-width: 360px;
   }
+  .banner {
+    max-width: 360px;
+  }
+  .post-user {
+    width: 328px;
+  }
   .user-card {
-    width: 280px;
+    min-width: 288px;
   }
   .header {
     max-width: 360px;

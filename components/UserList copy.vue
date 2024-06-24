@@ -76,7 +76,6 @@ const file3 = ref<File | null>(new File([""], "Item"));
       />
       <UiUpload v-model="file2" label="Upload" placeholder="Item" />
       <UiUpload
-        id="users"
         v-model="file3"
         label="Upload"
         placeholder="Item"

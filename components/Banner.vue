@@ -16,7 +16,7 @@
       <UiButton
         class="banner-button"
         :disabled="false"
-        @click="scrollTo('users')"
+        @click="scrollTo('registration')"
         >Sign up</UiButton
       >
     </div>
@@ -24,12 +24,7 @@
 </template>
 
 <script setup lang="ts">
-const scrollTo = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
+import { scrollTo } from '@/utils/scrollTo'
 </script>
 
 <style lang="scss" scoped>
@@ -65,21 +60,5 @@ const scrollTo = (id: string) => {
   bottom: 0;
   width: 100%;
   height: 650px;
-}
-
-@media (min-width: 1024px) {
-  .banner {
-    max-width: 1024px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  .banner {
-    max-width: 768px;
-  }
-}
-@media (max-width: 767px) {
-  .banner {
-    max-width: 360px;
-  }
 }
 </style>

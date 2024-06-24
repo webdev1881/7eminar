@@ -3,7 +3,6 @@ import { createApp, h } from 'vue';
 import Toast from '~/components/ui/Toast.vue';
 
 export default defineNuxtPlugin((nuxtApp) => {
-    
   nuxtApp.provide('toast', (message: string, status: 'success' | 'error') => {
     const mountElement = document.createElement('div');
     document.body.appendChild(mountElement);
@@ -14,7 +13,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
     });
 
-    toastApp.mount(mountElement);
+    const toastInstance = toastApp.mount(mountElement);
+
+    const topOffset = document.querySelectorAll('.toast').length * 60; // Adjust the offset based on the number of toasts
+    toastInstance.$el.style.top = `${-50 + topOffset}px`;
 
     setTimeout(() => {
       toastApp.unmount();

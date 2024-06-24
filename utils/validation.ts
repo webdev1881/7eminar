@@ -41,11 +41,38 @@ export function validatePhone(phone) {
   }
 }
 
-// export function validatePhone(phone) {
-//   const re = /^\+?\d{1,4}?\d{7,11}$/;
-//   return re.test(phone);
-// }
+export async function validateFile(file) {
 
-export function validateFile(file) {
-  return file && file.size > 0;
+  if (!file) return false;
+  const minWidth = 70;
+  const minHeight = 70;
+  const validTypes = ['image/jpeg', 'image/jpg'].includes(file.type)
+  const maxSize = file.size < 5 * 1024 * 1024 ; // 5 MB
+
+  const validImgDimention = await new Promise((resolve) => {
+    const img = new Image();
+    img.onload = function () {
+      if (img.width < 70 || img.height < 70) {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
+    };
+    img.onerror = function () {
+      resolve(false);
+    };
+    img.src = URL.createObjectURL(file);
+  });
+
+  return {
+    rules: validTypes && maxSize && validImgDimention,
+    error: function() {
+      if (!validTypes) { return "Invalid file type" }
+      if (!maxSize) { return "File size exceeds the maximum limit 5Mb" }
+      if (!validImgDimention) { return "Image dimensions are too small" }
+    },
+  }
+
+
 }
+

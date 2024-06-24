@@ -26,9 +26,6 @@ const onInput = (event: Event) => {
 <template>
   <div :class="['input-container', { 'invalid': error && touched }]">
     <label :class="{ 'invalid': error && touched }">{{ modelValue ? label : '' }}</label>
-      <!-- :class="{ 'input--filled': modelValue !== '' && touched }" -->
-      <!-- :class="{ invalid: !modelValue && touched }" -->
-      <!-- @blur="touched = true" -->
     <input
       :value="modelValue"
       @input="onInput"
@@ -39,9 +36,6 @@ const onInput = (event: Event) => {
     <p :class="['input-helper', { 'invalid': error && touched }]">
       {{ error && touched ? errorText : helperText }}
     </p>
-    <!-- <p>error {{ error }}</p>
-    <p>touched {{ touched }}</p> -->
-    
     
   </div>
 </template>

@@ -28,6 +28,7 @@ const handleClick = (event: Event) => {
 
 <style lang="scss" scoped>
 .btn {
+  margin: 0 auto;
   width: 100px;
   height: 34px;
   background-color: $primary;

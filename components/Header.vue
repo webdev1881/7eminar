@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { scrollTo } from '@/utils/scrollTo'
+</script>
+
 <template>
   <div class="heder-wrapper">
     <header class="header">
@@ -15,24 +19,13 @@
         <UiButton
           class="header-button"
           :disabled="false"
-          @click="scrollTo('users')"
+          @click="scrollTo('registration')"
           >Sign up</UiButton
         >
       </div>
     </header>
   </div>
 </template>
-
-<script setup lang="ts">
-
-const scrollTo = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-}
-
-</script>
 
 <style scoped>
 .heder-wrapper {
@@ -51,7 +44,7 @@ const scrollTo = (id: string) => {
 
 .header-left {
   display: flex;
-  padding-left: 32px;
+  /* padding-left: 32px; */
 }
 
 .logo {
@@ -69,7 +62,7 @@ const scrollTo = (id: string) => {
   width: 210px;
   display: flex;
   justify-content: space-between;
-  padding-right: 32px;
+  /* padding-right: 32px; */
 }
 
 /* @media (min-width: 1024px) {
